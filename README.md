@@ -2,11 +2,25 @@
 
 This repository contains the code and pre-trained models for our paper [Learning a Neural SQL Executor for Table Pre-training]().
 
-## Updates
+# 🔥 Updates
 
 07/01: We released our paper. Check it out!
 
-## Contributing
+# 🏴󠁶󠁵󠁭󠁡󠁰󠁿 Overview
+
+# ⚡️ Quickstart
+
+# 🛠 Usage
+
+## Requirements
+
+## Train
+
+## Evaluate
+
+# 💬 Citation
+
+# 👍 Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
@@ -20,7 +34,9 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-## Trademarks
+# 📝 License
+
+# ™️ Trademarks
 
 This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
 trademarks or logos is subject to and must follow 
