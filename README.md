@@ -36,6 +36,8 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 # 📝 License
 
+The code and pre-trained models are open-sourced under [MIT License](LICENSE-Code), while the pre-training corpus is released under [CC BY-SA 4.0](LICENSE-Data).
+
 # ™️ Trademarks
 
 This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
