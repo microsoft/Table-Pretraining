@@ -6,7 +6,7 @@ Utils for linearizing the table content into a flatten sequence
 """
 import abc
 import abc
-from typing import Dict
+from typing import Dict, List, List
 
 
 class TableLinearize(abc.ABC):
@@ -26,6 +26,18 @@ class TableLinearize(abc.ABC):
         """
         pass
 
+    def process_header(self, headers: List):
+        """
+        Given a list of headers, TableLinearize aims at converting it into a flatten sequence with special symbols.
+        """
+        pass
+
+    def process_row(self, row: List, row_index: int):
+        """
+        Given a row, TableLinearize aims at converting it into a flatten sequence with special symbols.
+        """
+        pass
+
 
 class IndexedRowTableLinearize(TableLinearize):
     """
@@ -37,17 +49,32 @@ class IndexedRowTableLinearize(TableLinearize):
         Given a table, TableLinearize aims at converting it into a flatten sequence with special symbols.
         """
         assert "header" in table_content and "rows" in table_content, self.PROMPT_MESSAGE
-        _table_str = "col : " + " | ".join(table_content["header"]) + " "
+        # process header
+        _table_str = self.process_header(table_content["header"]) + " "
+        # process rows
         for i, row_example in enumerate(table_content["rows"]):
-            # start from row 1 not from row 0
-            _table_str += "row " + str(i + 1) + " : "
-            row_cell_values = []
-            for cell_value in row_example:
-                if isinstance(cell_value, int):
-                    row_cell_values.append(str(cell_value))
-                elif self.lower_case:
-                    row_cell_values.append(cell_value.lower())
-                else:
-                    row_cell_values.append(cell_value)
-            _table_str += " | ".join(row_cell_values) + " "
-        return _table_str
+            # NOTE: the row should start from row 1 instead of 0
+            _table_str += self.process_row(row_example, row_index=i + 1) + " "
+        return _table_str.strip()
+
+    def process_header(self, headers: List):
+        """
+        Given a list of headers, TableLinearize aims at converting it into a flatten sequence with special symbols.
+        """
+        return "col : " + " | ".join(headers)
+
+    def process_row(self, row: List, row_index: int):
+        """
+        Given a row, TableLinearize aims at converting it into a flatten sequence with special symbols.
+        """
+        row_str = ""
+        row_cell_values = []
+        for cell_value in row:
+            if isinstance(cell_value, int):
+                row_cell_values.append(str(cell_value))
+            elif self.lower_case:
+                row_cell_values.append(cell_value.lower())
+            else:
+                row_cell_values.append(cell_value)
+        row_str += " | ".join(row_cell_values)
+        return "row " + str(row_index) + " : " + row_str
