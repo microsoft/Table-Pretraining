@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
 """
 A wrapper to wrap the fairseq preprocessing procedure.
 """

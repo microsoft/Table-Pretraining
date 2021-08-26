@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
 import os
 import tarfile
 import requests
@@ -10,9 +13,9 @@ logger = logging.getLogger(__name__)
 # Resources are obtained and modified from https://github.com/pytorch/fairseq/tree/master/examples/bart
 RESOURCE_DICT = {
     "bart.large": "https://dl.fbaipublicfiles.com/fairseq/models/bart.large.tar.gz",
-    "tapex.bart.large": "https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.bart.large.resource.zip",
+    "tapex.bart.large": "https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.large.tar.gz",
     "bart.base": "https://dl.fbaipublicfiles.com/fairseq/models/bart.base.tar.gz",
-    "tapex.bart.base": "https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.bart.base.resource.zip"
+    "tapex.bart.base": "https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.base.tar.gz"
 }
 
 DEFAULT_ENCODER_JSON = "https://dl.fbaipublicfiles.com/fairseq/gpt2_bpe/encoder.json"

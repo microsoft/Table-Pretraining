@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
 from typing import Dict, List
 from .table_linearize import TableLinearize
 from .table_truncate import TableTruncate
@@ -29,4 +32,8 @@ class TableProcessor(object):
         """
         Flatten the output for translation
         """
-        return self.target_delimiter.join(answer)
+        output = self.target_delimiter.join(answer)
+        if output.strip() == "":
+            raise Exception("The Answer is EMPTY!")
+        else:
+            return output

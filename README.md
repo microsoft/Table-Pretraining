@@ -1,24 +1,34 @@
-# Learning a Neural SQL Executor for Table Pre-training
+# T<span style="font-size:0.8em;">A</span>PE<span style="font-size:0.8em;">X</span>: Table Pre-training via Learning a Neural SQL Executor
 
-This repository contains the code and pre-trained models for our paper [Learning a Neural SQL Executor for Table Pre-training]().
+The official repository which contains the code and pre-trained models for our paper [T<span style="font-size:0.8em;">A</span>PE<span style="font-size:0.8em;">X</span>: Table Pre-training via Learning a Neural SQL Executor](https://arxiv.org/pdf/2107.07653.pdf).
 
 # 🔥 Updates
 
-07/01: We released our paper. Check it out!
+- 2021-08-27: We released the code, the pre-training corpus, and the pre-trained TAPEX model weights. Thanks for your patience!
+- 2021-07-16: We released our paper. Check it out!
 
 # 🏴󠁶󠁵󠁭󠁡󠁰󠁿 Overview
 
+
+
 # ⚡️ Quickstart
 
-# 🛠 Usage
-
-## Requirements
-
-## Train
-
-## Evaluate
+We do not assume you are familir
 
 # 💬 Citation
+
+If our work is useful for you, please consider citing our paper:
+
+```bibtex
+@misc{liu2021tapex,
+    title={TAPEX: Table Pre-training via Learning a Neural SQL Executor}, 
+    author={Qian Liu and Bei Chen and Jiaqi Guo and Zeqi Lin and Jian-guang Lou},
+    year={2021},
+    eprint={2107.07653},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
+}
+```
 
 # 👍 Contributing
 
@@ -36,6 +46,7 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 # 📝 License
 
+Please note that there are **TWO LICENSES** for code and pre-training corpus.
 The code and pre-trained models are open-sourced under [MIT License](LICENSE-Code), while the pre-training corpus is released under [CC BY-SA 4.0](LICENSE-Data).
 
 # ™️ Trademarks

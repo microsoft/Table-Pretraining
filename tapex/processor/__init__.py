@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
 from .table_linearize import IndexedRowTableLinearize
 from .table_truncate import CellLimitTruncate, RowDeleteTruncate
 from .table_processor import TableProcessor

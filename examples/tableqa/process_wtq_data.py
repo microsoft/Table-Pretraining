@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
 import os
 import shutil
 import zipfile
@@ -119,7 +122,7 @@ if __name__ == '__main__':
     preprocess_wtq_dataset(processed_wtq_data_dir)
 
     logger.info("*" * 80)
-    logger.info("Begin to build the huggingface dataset version in {}".format(processed_wtq_data_dir))
+    logger.info("Begin to build the HuggingFace dataset version in {}".format(processed_wtq_data_dir))
     build_wtq_huggingface_dataset(processed_wtq_data_dir)
 
     logger.info("*" * 80)

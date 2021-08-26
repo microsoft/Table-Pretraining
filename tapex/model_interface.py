@@ -1,20 +1,11 @@
-# Copyright (c) Facebook, Inc. and its affiliates.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
 
-import copy
 import logging
 from typing import Dict, List
 
-import numpy as np
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-from fairseq import utils
-from fairseq.data import encoders
 from fairseq.models.bart import BARTModel
-from omegaconf import open_dict
+
 from tapex.processor import get_default_processor
 
 logger = logging.getLogger(__name__)
@@ -25,8 +16,9 @@ class TAPEXModelInterface:
     A simple model interface to tapex for online prediction
     """
 
-    def __init__(self, tapex_model_path, table_processor=None):
-        self.model = BARTModel.from_pretrained(tapex_model_path)
+    def __init__(self, resource_dir, checkpoint_name, table_processor=None):
+        self.model = BARTModel.from_pretrained(model_name_or_path=resource_dir,
+                                               checkpoint_file=checkpoint_name)
         self.model.eval()
         if table_processor is not None:
             self.tab_processor = table_processor
@@ -40,4 +32,5 @@ class TAPEXModelInterface:
             sentences=[model_input],
             beam=5
         )
-        return model_output
+        # the result should be a list of answers, and we only care about the answer itself instead of score
+        return model_output[0][0]

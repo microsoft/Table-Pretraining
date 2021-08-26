@@ -1,4 +1,6 @@
-#!/usr/bin/env python
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
 import json
 import logging
 import os
@@ -121,6 +123,10 @@ if __name__ == '__main__':
     logger.info("*" * 80)
     logger.info("Begin to BPE and build the dataset binaries in {}/bin".format(processed_wikisql_data_dir))
     preprocess_wikisql_dataset(processed_wikisql_data_dir)
+
+    logger.info("*" * 80)
+    logger.info("Begin to build the HuggingFace dataset version in {}".format(processed_wikisql_data_dir))
+    build_wikisql_huggingface_dataset(processed_wikisql_data_dir)
 
     logger.info("*" * 80)
     logger.info("Now you can train models using {} as the passed argument. "

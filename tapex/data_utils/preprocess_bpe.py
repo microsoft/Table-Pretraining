@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
 """
 A wrapper to wrap the BPE preprocessing procedure for different tasks:
 1. TableQA tasks - Translation setting (WikiSQL, WikiTableQuestion, SQA)

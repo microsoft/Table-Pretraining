@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
 # The following script is adapted from the script of TaPas.
 # Original: https://github.com/google-research/tapas/master/wikisql_utils.py
 from typing import List

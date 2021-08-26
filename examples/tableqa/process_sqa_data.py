@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
 import os
 import shutil
 import zipfile
@@ -91,7 +94,7 @@ def build_sqa_fairseq_dataset(out_prefix, src_file, data_dir):
     output_f.close()
 
 
-def build_wtq_huggingface_dataset(fairseq_data_dir):
+def build_sqa_huggingface_dataset(fairseq_data_dir):
     convert_fairseq_to_hf(fairseq_data_dir, "train")
     convert_fairseq_to_hf(fairseq_data_dir, "valid")
     convert_fairseq_to_hf(fairseq_data_dir, "test")
@@ -123,6 +126,10 @@ if __name__ == '__main__':
     logger.info("*" * 80)
     logger.info("Begin to BPE and build the dataset binaries in {}/bin".format(processed_sqa_data_dir))
     preprocess_sqa_dataset(processed_sqa_data_dir)
+
+    logger.info("*" * 80)
+    logger.info("Begin to build the HuggingFace dataset version in {}".format(processed_sqa_data_dir))
+    build_sqa_huggingface_dataset(processed_sqa_data_dir)
 
     logger.info("*" * 80)
     logger.info("Now you can train models using {} as the passed argument. "
