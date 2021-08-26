@@ -16,11 +16,7 @@ class TableLinearize(abc.ABC):
         {"header": ["col1", "col2", "col3"], "rows": [["row11", "row12", "row13"], ["row21", "row22", "row23"]]}
     """
 
-    def __init__(self, lower_case):
-        # if lower case, return the uncased table str; otherwise the cased.
-        self.lower_case = lower_case
-
-    def process_table(self, table_content: Dict):
+    def process_table(self, table_content: Dict) -> str:
         """
         Given a table, TableLinearize aims at converting it into a flatten sequence with special symbols.
         """
@@ -72,8 +68,6 @@ class IndexedRowTableLinearize(TableLinearize):
         for cell_value in row:
             if isinstance(cell_value, int):
                 row_cell_values.append(str(cell_value))
-            elif self.lower_case:
-                row_cell_values.append(cell_value.lower())
             else:
                 row_cell_values.append(cell_value)
         row_str += " | ".join(row_cell_values)

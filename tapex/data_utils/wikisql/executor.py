@@ -1,6 +1,6 @@
 # The following script is adapted from the script of TaPas.
 # Original: https://github.com/google-research/tapas/master/wikisql_utils.py
-
+from typing import List
 import dataclasses
 import enum
 import functools
@@ -238,7 +238,7 @@ def _get_answer_text(table,
     return [str(table['real_rows'][r][c]) for r, c in answer_coordinates]
 
 
-def retrieve_wikisql_query_answer_tapas(table, example):
+def retrieve_wikisql_query_answer_tapas(table, example) -> List:
     answer_coordinates, aggregation_op = \
             _get_answer_coordinates(table, example)
     float_answer = _get_float_answer(table, answer_coordinates,

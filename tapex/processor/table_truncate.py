@@ -14,17 +14,17 @@ logger = logging.getLogger(__name__)
 
 class TableTruncate(ABC):
 
-    def __init__(self, tokenizer: BasicTokenizer = None, max_length: int = 1024):
+    def __init__(self, tokenizer: BasicTokenizer = None, max_input_length: int = 1024):
         """
         The class `TableTruncate` is used to compress a table to fit in memory.
         :param tokenizer: a huggingface transformer's tokenizer, to be used on BPE encoding to estimate expected tokens
-        :param max_length: the maximum length of `question` and `table`, i.e., the max position id of a model
+        :param max_input_length: the maximum length of `question` and `table`, i.e., the max position id of a model
         """
         if tokenizer is None:
             self.tokenizer = AutoTokenizer.from_pretrained(pretrained_model_name_or_path="facebook/bart-large")
         else:
             self.tokenizer = tokenizer
-        self.max_length = max_length
+        self.max_length = max_input_length
 
     def truncate_table(self, table_content: Dict, question: str, answer: List):
         """
@@ -167,5 +167,5 @@ class RowDeleteTruncate(TableTruncate):
                 del table_content["rows"][_row_idx]
 
         # only when the drop ratio is too large, logging for warning.
-        if "id" in table_content:
+        if "id" in table_content and len(drop_row_indices) > 0:
             logger.warning("Delete {:.2f} rows in table {}".format(len(drop_row_indices), table_content["id"]))
