@@ -124,7 +124,7 @@ def fairseq_bpe_translation(data_dir, resource_name, resource_dir=None, with_tes
                 arguments.append(value)
             sys.argv = ["call"] + arguments
             logging.info("BPE files by calling `python -m fairseq.examples.roberta.multiprocessing_bpe_encoder "
-                         "{}".format(" ".join(arguments)))
+                         "{}`".format(" ".join(arguments)))
             bpe_main()
             sys.argv = ["call"]
 
