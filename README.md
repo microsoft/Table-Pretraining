@@ -13,7 +13,8 @@ The official repository which contains the code and pre-trained models for our p
 
 # ⚡️ Quickstart
 
-We do not assume you are familir
+Although our model employ fairseq as the backend framework, we already wrap all necessary commands for developers.
+In other words, you do not need to study it to start your journey about TAPEX!
 
 # 💬 Citation
 
