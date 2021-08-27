@@ -17,8 +17,8 @@ RAW_DATASET_FOLDER = "raw_dataset"
 PROCESSED_DATASET_FOLDER = "dataset"
 TABLE_PATH = os.path.join(RAW_DATASET_FOLDER, "sqa")
 TABLE_PROCESSOR = get_default_processor(max_cell_length=15, max_input_length=1024)
-# Options: bart.base, bart.large, tapex.bart.base, tapex.bart.large
-RESOURCE_NAME = "bart.base"
+# Options: bart.base, bart.large, tapex.base, tapex.large
+MODEL_NAME = "bart.large"
 logger = logging.getLogger(__name__)
 
 
@@ -101,12 +101,12 @@ def build_sqa_huggingface_dataset(fairseq_data_dir):
 
 
 def preprocess_sqa_dataset(processed_data_dir):
-    fairseq_bpe_translation(processed_data_dir, resource_name=RESOURCE_NAME)
-    fairseq_binary_translation(processed_data_dir, resource_name=RESOURCE_NAME)
+    fairseq_bpe_translation(processed_data_dir, resource_name=MODEL_NAME)
+    fairseq_binary_translation(processed_data_dir, resource_name=MODEL_NAME)
 
 
 if __name__ == '__main__':
-    logger.info("You are using the setting of {}".format(RESOURCE_NAME))
+    logger.info("You are using the setting of {}".format(MODEL_NAME))
 
     logger.info("*" * 80)
     logger.info("Prepare to download SQA dataset from the official link...")

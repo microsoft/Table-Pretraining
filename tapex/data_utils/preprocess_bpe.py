@@ -86,15 +86,15 @@ def fairseq_bpe_translation(data_dir, resource_name, resource_dir=None, with_tes
     :param data_dir: the directory which stores the dataset files, including `train.src`, `train.tgt` and so on.
     :param resource_dir: the cached directory for `resource_name`.
     :param resource_name: corresponding resource files will be automatically downloaded by specifying this parameter.
-    You must select one from the choices of `bart.base`, `bart.large`, `tapex.bart.base` and `tapex.bart.large`.
+    You must select one from the choices of `bart.base`, `bart.large`, `tapex.base` and `tapex.large`.
     :param with_test_set: if true, process the test set; otherwise not.
     """
     if resource_dir is None:
         resource_dir = os.path.abspath(resource_name)
 
-    assert resource_name in ["bart.base", "bart.large", "tapex.bart.base", "tapex.bart.large"],\
+    assert resource_name in ["bart.base", "bart.large", "tapex.base", "tapex.large"],\
         "You must specify `download_resource_from` in " \
-        "`bart.base`, `bart.large`, `tapex.bart.base` and `tapex.bart.large`."
+        "`bart.base`, `bart.large`, `tapex.base` and `tapex.large`."
 
     if not os.path.exists(os.path.join(resource_dir, "model.pt")):
         # download file into resource folder
@@ -150,15 +150,15 @@ def fairseq_bpe_classification(data_dir, resource_name, resource_dir=None, with_
     :param data_dir: the directory which stores the dataset files, including `train.src`, `train.tgt` and so on.
     :param resource_dir: the cached folder for `resource_name`.
     :param resource_name: corresponding resource files will be automatically downloaded by specifying this parameter.
-    You must select one from the choices of `bart.base`, `bart.large`, `tapex.bart.base` and `tapex.bart.large`.
+    You must select one from the choices of `bart.base`, `bart.large`, `tapex.base` and `tapex.large`.
     :param with_test_set: if true, process the test set; otherwise not.
     """
     if resource_dir is None:
         resource_dir = os.path.abspath(resource_name)
 
-    assert resource_name in ["bart.base", "bart.large", "tapex.bart.base", "tapex.bart.large"], \
+    assert resource_name in ["bart.base", "bart.large", "tapex.base", "tapex.large"], \
         "You must specify `download_resource_from` in " \
-        "`bart.base`, `bart.large`, `tapex.bart.base` and `tapex.bart.large`."
+        "`bart.base`, `bart.large`, `tapex.base` and `tapex.large`."
 
     if not os.path.exists(os.path.join(resource_dir, "model.pt")):
         # download file into resource folder

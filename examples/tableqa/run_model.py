@@ -61,7 +61,7 @@ def set_predict_parser(parser_group):
                                 help="the model weight's name in the resource directory")
 
 
-def train_fariseq_model(args):
+def train_fairseq_model(args):
     cmd = f"""
         fairseq-train {args.dataset_dir}/bin \
         --save-dir {args.exp_dir} \
@@ -171,7 +171,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     if args.subcommand == "train":
-        train_fariseq_model(args)
+        train_fairseq_model(args)
     elif args.subcommand == "eval":
         evaluate_fairseq_model(args)
     elif args.subcommand == "predict":

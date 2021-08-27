@@ -13,9 +13,9 @@ logger = logging.getLogger(__name__)
 # Resources are obtained and modified from https://github.com/pytorch/fairseq/tree/master/examples/bart
 RESOURCE_DICT = {
     "bart.large": "https://dl.fbaipublicfiles.com/fairseq/models/bart.large.tar.gz",
-    "tapex.bart.large": "https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.large.tar.gz",
+    "tapex.large": "https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.large.tar.gz",
     "bart.base": "https://dl.fbaipublicfiles.com/fairseq/models/bart.base.tar.gz",
-    "tapex.bart.base": "https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.base.tar.gz"
+    "tapex.base": "https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.base.tar.gz"
 }
 
 DEFAULT_ENCODER_JSON = "https://dl.fbaipublicfiles.com/fairseq/gpt2_bpe/encoder.json"
@@ -33,6 +33,8 @@ def download_file(url, download_dir=None):
         os.makedirs(download_dir)
     with requests.get(url, stream=True) as r:
         file_name = os.path.join(download_dir, local_filename)
+        if os.path.exists(file_name):
+            os.remove(file_name)
         write_f = open(file_name, "wb")
         for data in tqdm(r.iter_content()):
             write_f.write(data)

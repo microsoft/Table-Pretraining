@@ -28,10 +28,12 @@ After one dataset is prepared, you can run the `tableqa/run_model.py` script to 
 
 ### 🍳 Train
 
-To train a model, you could simply run the following command, where `<dataset_dir>` refers to dirs such as `dataset/wikisql`, and `<model_path>` refers to a pre-trained model path such as `bart.base/model.pt`.
+To train a model, you could simply run the following command, where `<dataset_dir>/<model_name>` refers to directory which contains a `bin` folder such as `dataset/wikisql/bart.base`, `<model_path>` refers to a pre-trained model path such as `bart.base/model.pt`, `<model_arch>` refers to a pre-defined model architecture in fairseq such as `bart_base`.
+
+**HINT**: for `tapex.base` or `tapex.large`, `<model_arch>` should be `bart_base` or `bart_large` respectively.
 
 ```shell
-$ python run_model.py train --dataset-dir <dataset_dir> --model-path <model_path>
+$ python run_model.py train --dataset-dir <dataset_dir>/<model_name> --model-path <model_path> --model-arch <model_arch>
 ```
 
 A full list of training arguments can be seen as below:
@@ -61,10 +63,10 @@ A full list of training arguments can be seen as below:
 
 ### 🍪 Evaluate
 
-Once the model is fine-tuned, we can evaluate it by runing the following command, where `<dataset_dir>` refers to dirs such as `dataset/wikisql`, and `<model_path>` refers to a fine-tuned model path such as `checkpoints/checkpoint_best.pt`.
+Once the model is fine-tuned, we can evaluate it by runing the following command, where `<dataset_dir>/<model_name>` refers to directory which contains a `bin` folder such as `dataset/wikisql/bart.base`, and `<model_path>` refers to a fine-tuned model path such as `checkpoints/checkpoint_best.pt`.
 
 ```shell
-$ python run_model.py eval --dataset-dir <dataset_dir> --model-path <model_path>
+$ python run_model.py eval --dataset-dir <dataset_dir>/<model_name> --model-path <model_path>
 ```
 
 A full list of evaluating arguments can be seen as below:
