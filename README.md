@@ -55,7 +55,7 @@ This project contains two parts, `tapex` library and `examples` to employ it on 
 
 # ⚡️ Quickstart
 
-## Environment
+## Prepare Environment
 
 First, you should set up a python environment. This code base has been tested under python 3.x, and we officially support python 3.8.
 
@@ -80,9 +80,46 @@ $ pip install --editable ./
 
 > The argument `--editable` is important for your potential follow-up modification on the tapex library. The command will not only install dependencies, but also install `tapex` as a library, which can be imported easily.
 
-## Get Started
+## Use TAPEX
 
 Once `tapex` is successfully installed, you could go into [examples](examples) to enjoy fine-tuning TAPEX models and using them on different applications!
+
+# 🏰 Resource
+
+## Pre-training Corpus
+
+Our synthetic pre-training corpus which includes nearly **5,000,000** tuples of (*SQL queries*, *flattened tables*, *SQL execution results*) can be downloaded from [here](https://github.com/microsoft/Table-Pretraining/releases/download/v1.1/tapex_pretrain.tar.gz). You can use it for research purpose, but you should be careful about the [data license](LICENSE-Data).
+
+Below is an example from the pre-training corpus:
+
+- The SQL plus flattened Table as **INPUT**:
+```
+select vote where passed = 'may 6, 1861' col : state | passed | referendum | vote 
+row 1 : s. carolina | december 20, 1860 | none | none 
+row 2 : mississippi | january 9, 1861 | none | none row 3 : florida | january 10, 1861 | none | none 
+row 4 : alabama | january 11, 1861 | none | none row 5 : georgia | january 19, 1861 | none | none 
+row 6 : louisiana | january 26, 1861 | none | none row 7 : texas | february 1, 1861 | february 23 | 46,153-14,747 
+row 8 : virginia | april 17, 1861 | may 23 | 132,201-37,451 row 9 : arkansas | may 6, 1861 | none | none 
+row 10 : tennessee | may 6, 1861 | june 8 | 104,471-47,183 row 11 : n. carolina | may 20, 1861 | none | none 
+row 12 : missouri | october 31, 1861 | none | none row 13 : kentucky | november 20, 1861 | none | none
+```
+- The SQL Execution Result as **OUTPUT**:
+```
+104471
+```
+
+Here we want to acknowledge the huge effort of paper [On the Potential of Lexico-logical Alignments for Semantic Parsing to SQL Queries](https://arxiv.org/pdf/2010.11246.pdf), which provides the rich resources of SQL templates for us to synthesize the pre-training corpus.
+If you are interested, please give a STAR to their [repo](https://github.com/tzshi/squall).
+
+## Pre-trained models
+
+Model | Description | # params | Download
+---|---|---|---
+`tapex.base` | 6 encoder and decoder layers | 140M | [tapex.base.tar.gz](https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.base.tar.gz)
+`tapex.large` | 12 encoder and decoder layers | 400M | [tapex.large.tar.gz](https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.large.tar.gz)
+
+> More pre-trained models will be uploaded soon!
+
 
 # 💬 Citation
 
