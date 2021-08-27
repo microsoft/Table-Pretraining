@@ -5,16 +5,82 @@ The official repository which contains the code and pre-trained models for our p
 # 🔥 Updates
 
 - 2021-08-27: We released the code, the pre-training corpus, and the pre-trained TAPEX model weights. Thanks for your patience!
-- 2021-07-16: We released our paper. Check it out!
+- 2021-07-16: We released our [paper](https://arxiv.org/pdf/2107.07653.pdf) and [home page](https://table-pretraining.github.io/). Check it out!
 
 # 🏴󠁶󠁵󠁭󠁡󠁰󠁿 Overview
 
+## 📝 Paper
 
+In this project, we present T<span class="span-small">A</span>PE<span class="span-small">X</span> (for **Ta**ble **P**re-training via **Ex**ecution), a conceptually simple and empirically powerful pre-training approach to empower existing models with table reasoning skills.
+T<span class="span-small">A</span>PE<span class="span-small">X</span> realizes table pre-training by **learning a neural SQL executor over a synthetic corpus**, which is obtained by automatically synthesizing executable SQL queries.
+
+<figure style="text-align:center">
+  <img src="https://table-pretraining.github.io/assets/tapex_overview.jpg" width="300">
+  <figcaption>Fig 1. The schematic illustration of T<span class="span-small">A</span>PE<span class="span-small">X</span>. Tables not shown for brevity.</figcaption>
+</figure>
+
+The central point of T<span class="span-small">A</span>PE<span class="span-small">X</span> is to train a model to **mimic the SQL query execution process over a table**.
+We believe that if a model can be trained to faithfully *execute* SQL queries, then it must have a deep understanding of table structures and possess an inductive bias towards table structures.
+
+<div style="text-align:center">
+<img src="https://table-pretraining.github.io/assets/model_pretrain.gif" width="600"></div>
+
+Meanwhile, since the diversity of SQL queries can be guaranteed systemically, and thus a *diverse* and *high-quality* pre-training corpus can be automatically synthesized for T<span class="span-small">A</span>PE<span class="span-small">X</span>.
+
+## 💻 Project
+
+This project contains two parts, `tapex` library and `examples` to employ it on different table-related applications (e.g., Table Question Answering).
+
+- For `tapex`, there is an overview:
+
+```shell
+|-- common
+    |-- dbengine.py # the database engine to return answer for a SQL query
+    |-- download.py # download helper for automatic resource
+|-- data_utils
+    |-- wikisql
+        |-- executor.py # the re-implementation of WikiSQL style SQL execution to obtain ground-truth answers in the dataset
+    |-- format_converter.py # convert dataset formats into HuggingFace style
+    |-- preprocess_binary.py # wrapper for the fairseq preprocess script
+    |-- preprocess_bpe.py # wrapper for the BPE preprocess
+|-- processor
+    |-- table_linearize.py # the class to flatten a table into a linearized form, which should keep consistent during pre-training, fine-tuning and evaluating
+    |-- table_truncate.py # the class to truncate a long table into a shorter version to satisfy model's input length limit (e.g., BART can accept at most 1024 tokens)
+    |-- table_processor.py # the wrapper for the above two table utility function classes
+```
+
+- For `examples`, please refer to [here](examples/README.md) for more details.
 
 # ⚡️ Quickstart
 
-Although our model employ fairseq as the backend framework, we already wrap all necessary commands for developers.
-In other words, you do not need to study it to start your journey about TAPEX!
+## Environment
+
+First, you should set up a python environment. This code base has been tested under python 3.x, and we officially support python 3.8.
+
+After installing python 3.8, we strongly recommend you to use `virtualenv` (a tool to create isolated Python environments) to manage the python environment. You could use following commands to create an environment `venv` and activate it.
+
+```bash
+$ python3.8 -m venv venv
+$ source venv/bin/activate
+```
+
+## Install TAPEX
+
+The main requirements of our code base is [fairseq](https://github.com/pytorch/fairseq), which may be difficult for beginners to get started in an hour.
+
+However, do not worry, we already wrap all necessary commands for developers.
+In other words, you do not need to study fairseq to start your journey about TAPEX!
+You can simply run the following command (in the virtual environment) to use TAPEX:
+
+```bash
+$ pip install --editable ./
+```
+
+> The argument `--editable` is important for your potential follow-up modification on the tapex library. The command will not only install dependencies, but also install `tapex` as a library, which can be imported easily.
+
+## Get Started
+
+Once `tapex` is successfully installed, you could go into [examples](examples) to enjoy fine-tuning TAPEX models and using them on different applications!
 
 # 💬 Citation
 

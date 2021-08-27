@@ -31,7 +31,7 @@ After one dataset is prepared, you can run the `tableqa/run_model.py` script to 
 To train a model, you could simply run the following command, where `<dataset_dir>` refers to dirs such as `dataset/wikisql`, and `<model_path>` refers to a pre-trained model path such as `bart.base/model.pt`.
 
 ```shell
-python run_model.py train --dataset-dir <dataset_dir> --model-path <model_path>
+$ python run_model.py train --dataset-dir <dataset_dir> --model-path <model_path>
 ```
 
 A full list of training arguments can be seen as below:
@@ -64,7 +64,7 @@ A full list of training arguments can be seen as below:
 Once the model is fine-tuned, we can evaluate it by runing the following command, where `<dataset_dir>` refers to dirs such as `dataset/wikisql`, and `<model_path>` refers to a fine-tuned model path such as `checkpoints/checkpoint_best.pt`.
 
 ```shell
-python run_model.py eval --dataset-dir <dataset_dir> --model-path <model_path>
+$ python run_model.py eval --dataset-dir <dataset_dir> --model-path <model_path>
 ```
 
 A full list of evaluating arguments can be seen as below:
@@ -102,7 +102,7 @@ You can find it in downloaded resource folders `bart.base`, `bart.large`, `tapex
 Then you can predict the answer online with the following command, where `<model_name>` refers to the model weight file name such as `model.pt`.
 
 ```shell
-python run_model.py predict --resource-dir <resource_dir> --checkpoint-name <model_name>
+$ python run_model.py predict --resource-dir <resource_dir> --checkpoint-name <model_name>
 ```
 
 ## 🔎 Table Fact Verification (Released by Sep. 5)
