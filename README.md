@@ -47,6 +47,8 @@ This project contains two parts, `tapex` library and `examples` to employ it on 
     |-- table_linearize.py # the class to flatten a table into a linearized form, which should keep consistent during pre-training, fine-tuning and evaluating
     |-- table_truncate.py # the class to truncate a long table into a shorter version to satisfy model's input length limit (e.g., BART can accept at most 1024 tokens)
     |-- table_processor.py # the wrapper for the above two table utility function classes
+|-- model_eval.py # evaluate the denotation accuracy of model
+|-- model_interface.py # wrap a model interface for interaction based on HubInterface
 ```
 
 - For `examples`, please refer to [here](examples) for more details.
