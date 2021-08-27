@@ -11,7 +11,7 @@ The official repository which contains the code and pre-trained models for our p
 
 ## 📝 Paper
 
-In this project, we present T<span class="span-small">A</span>PE<span class="span-small">X</span> (for **Ta**ble **P**re-training via **Ex**ecution), a conceptually simple and empirically powerful pre-training approach to empower existing models with table reasoning skills.
+In the paper, we present T<span class="span-small">A</span>PE<span class="span-small">X</span> (for **Ta**ble **P**re-training via **Ex**ecution), a conceptually simple and empirically powerful pre-training approach to empower existing models with table reasoning skills.
 T<span class="span-small">A</span>PE<span class="span-small">X</span> realizes table pre-training by **learning a neural SQL executor over a synthetic corpus**, which is obtained by automatically synthesizing executable SQL queries.
 
 <figure style="text-align:center">
@@ -49,7 +49,7 @@ This project contains two parts, `tapex` library and `examples` to employ it on 
     |-- table_processor.py # the wrapper for the above two table utility function classes
 ```
 
-- For `examples`, please refer to [here](examples/README.md) for more details.
+- For `examples`, please refer to [here](examples) for more details.
 
 # ⚡️ Quickstart
 

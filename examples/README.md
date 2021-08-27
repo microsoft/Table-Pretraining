@@ -12,7 +12,7 @@ In the following, we provide a step-by-step guide for training, evaluating and i
 
 > It is worth noting that NOW we only wrap and support fairseq style model training / evaluating / interacting, and we will support HuggingFace style model playing in the near future.
 
-### Dataset
+### 🍲 Dataset
 
 In this project, we regard TableQA as a machine translation task and employ TAPEX to autoregressively output the answer(s).
 Therefore, firstly we should convert the original datasets into a compatible format for the backend learning framework (fairseq or HuggingFace).
@@ -26,7 +26,7 @@ Note that the one-stop service includes the procedure of downloading datasets an
 
 After one dataset is prepared, you can run the `tableqa/run_model.py` script to train your TableQA models on different datasets.
 
-### Train Model
+### 🍳 Train
 
 To train a model, you could simply run the following command, where `<dataset_dir>` refers to dirs such as `dataset/wikisql`, and `<model_path>` refers to a pre-trained model path such as `bart.base/model.pt`.
 
@@ -59,7 +59,7 @@ A full list of training arguments can be seen as below:
                     the peak learning rate for model training
 ```
 
-### Evaluate Model
+### 🍪 Evaluate
 
 Once the model is fine-tuned, we can evaluate it by runing the following command, where `<dataset_dir>` refers to dirs such as `dataset/wikisql`, and `<model_path>` refers to a fine-tuned model path such as `checkpoints/checkpoint_best.pt`.
 
@@ -86,7 +86,7 @@ A full list of evaluating arguments can be seen as below:
                     the predict folder of generated result.
 ```
 
-### Interact with Model
+### 🍻 Interact
 
 Except for offline generating, we also wrap a model interface for interacting with our model, which will be useful for online prediction.
 
