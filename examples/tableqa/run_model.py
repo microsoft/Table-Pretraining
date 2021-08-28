@@ -21,7 +21,7 @@ def set_train_parser(parser_group):
                               help="dataset directory where train.src is located in")
     train_parser.add_argument("--exp-dir", type=str, default="checkpoints",
                               help="experiment directory which stores the checkpoint weights")
-    train_parser.add_argument("--model-path", type=str, default="bart.base/model.pt",
+    train_parser.add_argument("--model-path", type=str, default="tapex.base/model.pt",
                               help="the directory of pre-trained model path")
     train_parser.add_argument("--model-arch", type=str, default="bart_base", choices=["bart_large", "bart_base"],
                               help="tapex large should correspond to bart_large, and tapex base should be bart_base")
@@ -41,8 +41,8 @@ def set_eval_parser(parser_group):
     eval_parser = parser_group.add_parser("eval")
     eval_parser.add_argument("--dataset-dir", type=str, required=True, default="",
                              help="dataset directory where train.src is located in")
-    eval_parser.add_argument("--model-path", type=str, default="wikisql.tapex.base/model.pt",
-                             help="the directory of fine-tuned model path such as wikisql.tapex.base")
+    eval_parser.add_argument("--model-path", type=str, default="tapex.base.wikisql/model.pt",
+                             help="the directory of fine-tuned model path such as tapex.base.wikisql/model.pt")
     eval_parser.add_argument("--sub-dir", type=str, default="valid", choices=["train", "valid", "test"],
                              help="the directory of pre-trained model path, and the default should be in"
                                   "{bart.base, bart.large, tapex.base, tapex.large}.")
@@ -54,7 +54,7 @@ def set_eval_parser(parser_group):
 
 def set_predict_parser(parser_group):
     predict_parser = parser_group.add_parser("predict")
-    predict_parser.add_argument("--resource-dir", type=str, required=True, default="",
+    predict_parser.add_argument("--resource-dir", type=str, required=True, default="./tapex.base",
                                 help="the resource dir which contains the model weights, vocab.bpe, "
                                      "dict.src.txt, dict.tgt.txt and encoder.json.")
     predict_parser.add_argument("--checkpoint-name", type=str, default="model.pt",

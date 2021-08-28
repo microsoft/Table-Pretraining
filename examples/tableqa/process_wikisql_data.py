@@ -19,7 +19,7 @@ RAW_DATASET_FOLDER = "raw_dataset"
 PROCESSED_DATASET_FOLDER = "dataset"
 TABLE_PROCESSOR = get_default_processor(max_cell_length=15, max_input_length=1024)
 # Options: bart.base, bart.large, tapex.base, tapex.large
-MODEL_NAME = "bart.base"
+MODEL_NAME = "tapex.base"
 logger = logging.getLogger(__name__)
 
 
@@ -129,5 +129,5 @@ if __name__ == '__main__':
     build_wikisql_huggingface_dataset(processed_wikisql_data_dir)
 
     logger.info("*" * 80)
-    logger.info("Now you can train models using {} as the passed argument. "
-                "More details in `train_generation.py`.".format(processed_wikisql_data_dir))
+    logger.info("Now you can train models using {} as the <data_dir> argument. "
+                "More details in `run_model.py`.".format(os.path.join(processed_wikisql_data_dir, MODEL_NAME)))

@@ -24,16 +24,18 @@ Now we support the **one-stop services** for the following datasets, and you can
 
 Note that the one-stop service includes the procedure of downloading datasets and pretrained tapex models, truncating long inputs, converting to the fairseq machine translation format, applying BPE tokenization and preprocessing for fairseq model training.
 
+By default, these scripts will process data using the dictionary of `tapex.base`. If you want to switch pre-trained models, please change the variable `MODLE_NAME` at line 21.
+
 After one dataset is prepared, you can run the `tableqa/run_model.py` script to train your TableQA models on different datasets.
 
 ### 🍳 Train
 
-To train a model, you could simply run the following command, where `<dataset_dir>/<model_name>` refers to directory which contains a `bin` folder such as `dataset/wikisql/bart.base`, `<model_path>` refers to a pre-trained model path such as `bart.base/model.pt`, `<model_arch>` refers to a pre-defined model architecture in fairseq such as `bart_base`.
+To train a model, you could simply run the following command, where `<dataset_dir>` refers to directory which contains a `bin` folder such as `dataset/wikisql/tapex.base`, `<model_path>` refers to a pre-trained model path such as `tapex.base/model.pt`, `<model_arch>` refers to a pre-defined model architecture in fairseq such as `bart_base`.
 
 **HINT**: for `tapex.base` or `tapex.large`, `<model_arch>` should be `bart_base` or `bart_large` respectively.
 
 ```shell
-$ python run_model.py train --dataset-dir <dataset_dir>/<model_name> --model-path <model_path> --model-arch <model_arch>
+$ python run_model.py train --dataset-dir <dataset_dir> --model-path <model_path> --model-arch <model_arch>
 ```
 
 A full list of training arguments can be seen as below:
@@ -63,10 +65,10 @@ A full list of training arguments can be seen as below:
 
 ### 🍪 Evaluate
 
-Once the model is fine-tuned, we can evaluate it by runing the following command, where `<dataset_dir>/<model_name>` refers to directory which contains a `bin` folder such as `dataset/wikisql/bart.base`, and `<model_path>` refers to a fine-tuned model path such as `checkpoints/checkpoint_best.pt`.
+Once the model is fine-tuned, we can evaluate it by runing the following command, where `<dataset_dir>` refers to directory which contains a `bin` folder such as `dataset/wikisql/tapex.base`, and `<model_path>` refers to a fine-tuned model path such as `checkpoints/checkpoint_best.pt`.
 
 ```shell
-$ python run_model.py eval --dataset-dir <dataset_dir>/<model_name> --model-path <model_path>
+$ python run_model.py eval --dataset-dir <dataset_dir> --model-path <model_path>
 ```
 
 A full list of evaluating arguments can be seen as below:
@@ -106,6 +108,7 @@ Then you can predict the answer online with the following command, where `<model
 ```shell
 $ python run_model.py predict --resource-dir <resource_dir> --checkpoint-name <model_name>
 ```
+> Note that if <resource_dir> is under the current working directory, you should still specify a prefix `./` to make the path like a local path (e.g., ./tapex.base). Otherwise, fairseq will regard it as a model name.
 
 ## 🔎 Table Fact Verification (Released by Sep. 5)
 
