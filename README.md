@@ -11,7 +11,7 @@ The official repository which contains the code and pre-trained models for our p
 
 ## 📝 Paper
 
-In the paper, we present T<span class="span-small">A</span>PE<span class="span-small">X</span> (for **Ta**ble **P**re-training via **Ex**ecution), a conceptually simple and empirically powerful pre-training approach to empower existing models with table reasoning skills.
+In the paper, we present T<span class="span-small">A</span>PE<span class="span-small">X</span> (for **Ta**ble **P**re-training via **Ex**ecution), a conceptually simple and empirically powerful pre-training approach to empower existing generative pre-trained models (e.g., [BART](https://arxiv.org/abs/1910.13461) in our paper) with table reasoning skills.
 T<span class="span-small">A</span>PE<span class="span-small">X</span> realizes table pre-training by **learning a neural SQL executor over a synthetic corpus**, which is obtained by automatically synthesizing executable SQL queries.
 
 <figure style="text-align:center">
