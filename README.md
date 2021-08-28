@@ -19,11 +19,14 @@ T<span class="span-small">A</span>PE<span class="span-small">X</span> realizes t
   <figcaption>Fig 1. The schematic illustration of T<span class="span-small">A</span>PE<span class="span-small">X</span>. Tables not shown for brevity.</figcaption>
 </figure>
 
+
 The central point of T<span class="span-small">A</span>PE<span class="span-small">X</span> is to train a model to **mimic the SQL query execution process over a table**.
 We believe that if a model can be trained to faithfully *execute* SQL queries, then it must have a deep understanding of table structures and possess an inductive bias towards table structures.
 
+
 <div style="text-align:center">
 <img src="https://table-pretraining.github.io/assets/model_pretrain.gif" width="600"></div>
+
 
 Meanwhile, since the diversity of SQL queries can be guaranteed systemically, and thus a *diverse* and *high-quality* pre-training corpus can be automatically synthesized for T<span class="span-small">A</span>PE<span class="span-small">X</span>.
 
