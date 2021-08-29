@@ -53,21 +53,14 @@ def evaluate(data: List, target_delimiter: str):
 
     correct_num = 0
     correct_arr = []
-    chunk_level_correct = defaultdict(lambda: {
-        "total": 0,
-        "correct": 0
-    })
     total = len(data)
 
     for example in data:
         predict_str, ground_str, source_str, predict_id = example
-        chunk_number = source_str.count("<chunk>")
         is_correct = evaluate_example(predict_str, ground_str)
         if is_correct:
             correct_num += 1
-            chunk_level_correct[chunk_number]["correct"] += 1
         correct_arr.append(is_correct)
-        chunk_level_correct[chunk_number]["total"] += 1
 
     print("Correct / Total : {} / {}, Denotation Accuracy : {:.3f}".format(correct_num, total, correct_num / total))
     return correct_arr

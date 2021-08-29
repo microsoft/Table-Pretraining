@@ -11,6 +11,9 @@ from tapex.processor.table_linearize import TableLinearize
 
 logger = logging.getLogger(__name__)
 
+# truncate will randomly drop rows
+random.seed(42)
+
 
 class TableTruncate(ABC):
 
@@ -79,6 +82,7 @@ class RowDeleteTruncate(TableTruncate):
     The row deleting principle is straightforward: randomly deleting rows to fit the table into memory,
     but do not make it too small (e.g., just lower than the limitation is ok).
     """
+
     def __init__(self, table_linearize: TableLinearize, **kwargs):
         super().__init__(**kwargs)
         self.table_linearize = table_linearize

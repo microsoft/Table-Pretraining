@@ -30,9 +30,15 @@ After one dataset is prepared, you can run the `tableqa/run_model.py` script to 
 
 ### 🍳 Train
 
-To train a model, you could simply run the following command, where `<dataset_dir>` refers to directory which contains a `bin` folder such as `dataset/wikisql/tapex.base`, `<model_path>` refers to a pre-trained model path such as `tapex.base/model.pt`, `<model_arch>` refers to a pre-defined model architecture in fairseq such as `bart_base`.
+To train a model, you could simply run the following command, where:
+- `<dataset_dir>` refers to directory which contains a `bin` folder such as `dataset/wikisql/tapex.base`
+- `<model_path>` refers to a pre-trained model path such as `tapex.base/model.pt`
+- `<model_arch>` is a pre-defined model architecture in fairseq such as `bart_base`.
 
-**HINT**: for `tapex.base` or `tapex.large`, `<model_arch>` should be `bart_base` or `bart_large` respectively.
+**HINT**: 
+- for `tapex.base` or `tapex.large`, `<model_arch>` should be `bart_base` or `bart_large` respectively.
+- we would like to raise the readers' attention on the fact that the `accuracy` metric during training indicates the token-level accuracy defined in fairseq instead of the following denotation accuracy. Therefore, the `checkpoint_best.pt` is not always the best one for denotation accuracy. We recommend readers to evaluate all checkpoints using the following command to determine the best one.
+
 
 ```shell
 $ python run_model.py train --dataset-dir <dataset_dir> --model-path <model_path> --model-arch <model_arch>
@@ -65,10 +71,14 @@ A full list of training arguments can be seen as below:
 
 ### 🍪 Evaluate
 
-Once the model is fine-tuned, we can evaluate it by runing the following command, where `<dataset_dir>` refers to directory which contains a `bin` folder such as `dataset/wikisql/tapex.base`, and `<model_path>` refers to a fine-tuned model path such as `checkpoints/checkpoint_best.pt`.
+Once the model is fine-tuned, we can evaluate it by running the following command, where:
+- `<dataset_dir>` refers to directory which contains a `bin` folder such as `dataset/wikisql/tapex.base`
+- `<model_path>` refers to a fine-tuned model path such as `checkpoints/checkpoint_best.pt`
+- `<sub_dir>` refers to `valid` or `test` for the validation set and test set.
+- `<predict_dir>` is used to save the evaluating result, which indicates the correctness of each sample such as `predict_wikisql`
 
 ```shell
-$ python run_model.py eval --dataset-dir <dataset_dir> --model-path <model_path>
+$ python run_model.py eval --dataset-dir <dataset_dir> --model-path <model_path> --sub-dir <sub_dir> --predict-dir <predict_dir>
 ```
 
 A full list of evaluating arguments can be seen as below:

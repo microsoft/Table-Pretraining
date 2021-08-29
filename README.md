@@ -9,7 +9,7 @@ The official repository which contains the code and pre-trained models for our p
 
 # 🏴󠁶󠁵󠁭󠁡󠁰󠁿 Overview
 
-## 📝 Paper
+## Paper
 
 In the paper, we present T<span class="span-small">A</span>PE<span class="span-small">X</span> (for **Ta**ble **P**re-training via **Ex**ecution), a conceptually simple and empirically powerful pre-training approach to empower existing generative pre-trained models (e.g., [BART](https://arxiv.org/abs/1910.13461) in our paper) with table reasoning skills.
 T<span class="span-small">A</span>PE<span class="span-small">X</span> realizes table pre-training by **learning a neural SQL executor over a synthetic corpus**, which is obtained by automatically synthesizing executable SQL queries.
@@ -30,7 +30,7 @@ We believe that if a model can be trained to faithfully *execute* SQL queries, t
 
 Meanwhile, since the diversity of SQL queries can be guaranteed systemically, and thus a *diverse* and *high-quality* pre-training corpus can be automatically synthesized for T<span class="span-small">A</span>PE<span class="span-small">X</span>.
 
-## 💻 Project
+## Project
 
 This project contains two parts, `tapex` library and `examples` to employ it on different table-related applications (e.g., Table Question Answering).
 
@@ -97,18 +97,11 @@ Below is an example from the pre-training corpus:
 
 - The SQL plus flattened Table as **INPUT**:
 ```
-select vote where passed = 'may 6, 1861' col : state | passed | referendum | vote 
-row 1 : s. carolina | december 20, 1860 | none | none 
-row 2 : mississippi | january 9, 1861 | none | none row 3 : florida | january 10, 1861 | none | none 
-row 4 : alabama | january 11, 1861 | none | none row 5 : georgia | january 19, 1861 | none | none 
-row 6 : louisiana | january 26, 1861 | none | none row 7 : texas | february 1, 1861 | february 23 | 46,153-14,747 
-row 8 : virginia | april 17, 1861 | may 23 | 132,201-37,451 row 9 : arkansas | may 6, 1861 | none | none 
-row 10 : tennessee | may 6, 1861 | june 8 | 104,471-47,183 row 11 : n. carolina | may 20, 1861 | none | none 
-row 12 : missouri | october 31, 1861 | none | none row 13 : kentucky | november 20, 1861 | none | none
+select ( select number where number = 4 ) - ( select number where number = 3 ) col : number | date | name | age (at execution) | age (at offense) | race | state | method row 1 : 1 | november 2, 1984 | velma margie barfield | 52 | 45 | white | north carolina | lethal injection row 2 : 2 | february 3, 1998 | karla faye tucker | 38 | 23 | white | texas | lethal injection row 3 : 3 | march 30, 1998 | judias v. buenoano | 54 | 28 | white | florida | electrocution row 4 : 4 | february 24, 2000 | betty lou beets | 62 | 46 | white | texas | lethal injection row 5 : 5 | may 2, 2000 | christina marie riggs | 28 | 26 | white | arkansas | lethal injection row 6 : 6 | january 11, 2001 | wanda jean allen | 41 | 29 | black | oklahoma | lethal injection row 7 : 7 | may 1, 2001 | marilyn kay plantz | 40 | 27 | white | oklahoma | lethal injection row 8 : 8 | december 4, 2001 | lois nadean smith | 61 | 41 | white | oklahoma | lethal injection row 9 : 9 | may 10, 2002 | lynda lyon block | 54 | 45 | white | alabama | electrocution row 10 : 10 | october 9, 2002 | aileen carol wuornos | 46 | 33 | white | florida | lethal injection row 11 : 11 | september 14, 2005 | frances elaine newton | 40 | 21 | black | texas | lethal injection row 12 : 12 | september 23, 2010 | teresa wilson bean lewis | 41 | 33 | white | virginia | lethal injection row 13 : 13 | june 26, 2013 | kimberly lagayle mccarthy | 52 | 36 | black | texas | lethal injection row 14 : 14 | february 5, 2014 | suzanne margaret basso | 59 | 44 | white | texas | lethal injection
 ```
 - The SQL Execution Result as **OUTPUT**:
 ```
-104471
+1.0
 ```
 
 Here we want to acknowledge the huge effort of paper [On the Potential of Lexico-logical Alignments for Semantic Parsing to SQL Queries](https://arxiv.org/pdf/2010.11246.pdf), which provides the rich resources of SQL templates for us to synthesize the pre-training corpus.
@@ -121,7 +114,23 @@ Model | Description | # params | Download
 `tapex.base` | 6 encoder and decoder layers | 140M | [tapex.base.tar.gz](https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.base.tar.gz)
 `tapex.large` | 12 encoder and decoder layers | 400M | [tapex.large.tar.gz](https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.large.tar.gz)
 
-> More pre-trained models will be uploaded soon!
+## Fine-tuned Models
+
+We provide fine-tuned model weights and their performance on different datasets below. The following Accuracy (Acc) refers to denotation accuracy computed by our script `model_eval.py`. Meanwhile, it is worth noting that we need truncating long tables during preprocessing with some randomness. Therefore, we also provide preprocessed datasets for reproducing our experimental results.
+
+Model | Dev Acc | Test Acc | Data | Download
+---|---|----|----|----
+`tapex.large.wtq` | 58.0 | 57.2 | WikiTableQuestions | [data](https://github.com/microsoft/Table-Pretraining/releases/download/preprocessed-data/wtq.preprocessed.zip) [model](https://github.com/microsoft/Table-Pretraining/releases/download/fine-tuned-model/tapex.large.wtq.tar.gz)
+`tapex.large.sqa` | 70.7 | 74.0 | SQA | [data](https://github.com/microsoft/Table-Pretraining/releases/download/preprocessed-data/sqa.preprocessed.zip) [model](https://github.com/microsoft/Table-Pretraining/releases/download/fine-tuned-model/tapex.large.sqa.tar.gz)
+
+Given these fine-tuned model weights, you can play with them using the `predict` mode in `examples/tableqa/run_model.py`.
+
+For example, you can use the following command and see its log:
+```shell
+$ python examples/tableqa/run_model.py predict --resource-dir ./tapex.large.wtq --checkpoint-name model.pt
+2021-08-29 17:39:47 | INFO | __main__ | Receive question as : Greece held its last Summer Olympics in which year?
+2021-08-29 17:39:47 | INFO | __main__ | The answer should be : 2004
+```
 
 
 # 💬 Citation
