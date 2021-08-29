@@ -109,6 +109,8 @@ If you are interested, please give a STAR to their [repo](https://github.com/tzs
 
 ## Pre-trained models
 
+The pre-trained models trained on the above pre-training corpus.
+
 Model | Description | # params | Download
 ---|---|---|---
 `tapex.base` | 6 encoder and decoder layers | 140M | [tapex.base.tar.gz](https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.base.tar.gz)
@@ -120,8 +122,8 @@ We provide fine-tuned model weights and their performance on different datasets 
 
 Model | Dev Acc | Test Acc | Data | Download
 ---|---|----|----|----
-`tapex.large.wtq` | 58.0 | 57.2 | WikiTableQuestions | [data](https://github.com/microsoft/Table-Pretraining/releases/download/preprocessed-data/wtq.preprocessed.zip) [model](https://github.com/microsoft/Table-Pretraining/releases/download/fine-tuned-model/tapex.large.wtq.tar.gz)
-`tapex.large.sqa` | 70.7 | 74.0 | SQA | [data](https://github.com/microsoft/Table-Pretraining/releases/download/preprocessed-data/sqa.preprocessed.zip) [model](https://github.com/microsoft/Table-Pretraining/releases/download/fine-tuned-model/tapex.large.sqa.tar.gz)
+`tapex.large.wtq` | 58.0 | 57.2 | WikiTableQuestions | [wtq.preprocessed.zip](https://github.com/microsoft/Table-Pretraining/releases/download/preprocessed-data/wtq.preprocessed.zip) [tapex.large.wtq.tar.gz](https://github.com/microsoft/Table-Pretraining/releases/download/fine-tuned-model/tapex.large.wtq.tar.gz)
+`tapex.large.sqa` | 70.7 | 74.0 | SQA | [sqa.preprocessed.zip](https://github.com/microsoft/Table-Pretraining/releases/download/preprocessed-data/sqa.preprocessed.zip) [tapex.large.sqa.tar.gz](https://github.com/microsoft/Table-Pretraining/releases/download/fine-tuned-model/tapex.large.sqa.tar.gz)
 
 Given these fine-tuned model weights, you can play with them using the `predict` mode in `examples/tableqa/run_model.py`.
 
