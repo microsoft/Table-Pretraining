@@ -4,8 +4,9 @@ The official repository which contains the code and pre-trained models for our p
 
 # 🔥 Updates
 
-- 2021-08-27: We released the code, the pre-training corpus, and the pre-trained TAPEX model weights. Thanks for your patience!
-- 2021-07-16: We released our [paper](https://arxiv.org/pdf/2107.07653.pdf) and [home page](https://table-pretraining.github.io/). Check it out!
+- **2021-08-28**: We released the fine-tuned model weights on SQA and WikiTableQuestions!
+- **2021-08-27**: We released the code, the pre-training corpus, and the pre-trained TAPEX model weights. Thanks for your patience!
+- **2021-07-16**: We released our [paper](https://arxiv.org/pdf/2107.07653.pdf) and [home page](https://table-pretraining.github.io/). Check it out!
 
 # 🏴󠁶󠁵󠁭󠁡󠁰󠁿 Overview
 
