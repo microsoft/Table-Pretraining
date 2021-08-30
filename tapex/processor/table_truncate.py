@@ -155,7 +155,7 @@ class RowDeleteTruncate(TableTruncate):
                 truncated_unrelated_indices.append(_row_idx)
             else:
                 # add neighbours to preserve information aggressively
-                related_indices.append([_row_idx - 2, _row_idx - 1,
+                related_indices.extend([_row_idx - 2, _row_idx - 1,
                                         _row_idx,
                                         _row_idx + 1, _row_idx + 2])
 
