@@ -7,13 +7,13 @@ A wrapper to wrap the BPE preprocessing procedure for different tasks:
 2. TableFT tasks - Class setting (TabFact)
 """
 import argparse
-import os
-import shutil
-import tarfile
 import logging
-from fairseq.examples.roberta.multiprocessing_bpe_encoder import main as bpe_main
-from common.download import download_model_weights, download_bpe_files
+import os
 import sys
+
+from fairseq.examples.roberta.multiprocessing_bpe_encoder import main as bpe_main
+
+from tapex.common.download import download_model_weights, download_bpe_files
 
 logger = logging.getLogger(__name__)
 

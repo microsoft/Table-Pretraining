@@ -111,7 +111,7 @@ class RowDeleteTruncate(TableTruncate):
     def estimate_delete_ratio(self, table_content: Dict, question: str):
         assert "header" in table_content and "rows" in table_content
         number_of_rows = len(table_content["rows"])
-        # calculate the tokens of header, special tokens will only be pre-prended into question
+        # calculate the tokens of header, special tokens will only be pre-prepended into question
         question_tokens = self.tokenizer.tokenize(question, add_special_tokens=True)
         # calculate the tokens of header
         header_string = self.table_linearize.process_header(table_content["header"])
