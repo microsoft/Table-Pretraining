@@ -92,7 +92,7 @@ Once `tapex` is successfully installed, you could go into [examples](examples) t
 
 ## Pre-training Corpus
 
-Our synthetic pre-training corpus which includes nearly **5,000,000** tuples of (*SQL queries*, *flattened tables*, *SQL execution results*) can be downloaded from [here](https://github.com/microsoft/Table-Pretraining/releases/download/v1.1/tapex_pretrain.tar.gz). You can use it for research purpose, but you should be careful about the [data license](LICENSE-Data).
+Our synthetic pre-training corpus which includes nearly **5,000,000** tuples of (*SQL queries*, *flattened tables*, *SQL execution results*) can be downloaded from [here](https://github.com/microsoft/Table-Pretraining/releases/download/pretraining-corpus/tapex_pretrain.tar.gz). You can use it for research purpose, but you should be careful about the [data license](LICENSE-Data).
 
 Below is an example from the pre-training corpus:
 
@@ -114,8 +114,8 @@ The pre-trained models trained on the above pre-training corpus.
 
 Model | Description | # Params | Download
 ---|---|---|---
-`tapex.base` | 6 encoder and decoder layers | 140M | [tapex.base.tar.gz](https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.base.tar.gz)
-`tapex.large` | 12 encoder and decoder layers | 400M | [tapex.large.tar.gz](https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.large.tar.gz)
+`tapex.base` | 6 encoder and decoder layers | 140M | [tapex.base.tar.gz](https://github.com/microsoft/Table-Pretraining/releases/download/pretrained-model/tapex.base.tar.gz)
+`tapex.large` | 12 encoder and decoder layers | 400M | [tapex.large.tar.gz](https://github.com/microsoft/Table-Pretraining/releases/download/pretrained-model/tapex.large.tar.gz)
 
 ## Fine-tuned Models
 

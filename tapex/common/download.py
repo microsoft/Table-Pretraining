@@ -13,9 +13,9 @@ logger = logging.getLogger(__name__)
 # Resources are obtained and modified from https://github.com/pytorch/fairseq/tree/master/examples/bart
 RESOURCE_DICT = {
     "bart.large": "https://dl.fbaipublicfiles.com/fairseq/models/bart.large.tar.gz",
-    "tapex.large": "https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.large.tar.gz",
+    "tapex.large": "https://github.com/microsoft/Table-Pretraining/releases/download/pretrained-model/tapex.base.tar.gz",
     "bart.base": "https://dl.fbaipublicfiles.com/fairseq/models/bart.base.tar.gz",
-    "tapex.base": "https://github.com/microsoft/Table-Pretraining/releases/download/v1.0/tapex.base.tar.gz"
+    "tapex.base": "https://github.com/microsoft/Table-Pretraining/releases/download/pretrained-model/tapex.large.tar.gz"
 }
 
 DEFAULT_ENCODER_JSON = "https://dl.fbaipublicfiles.com/fairseq/gpt2_bpe/encoder.json"
