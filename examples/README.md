@@ -120,7 +120,7 @@ $ python run_model.py predict --resource-dir <resource_dir> --checkpoint-name <m
 ```
 > Note that if <resource_dir> is under the current working directory, you should still specify a prefix `./` to make the path like a local path (e.g., ./tapex.base). Otherwise, fairseq will regard it as a model name.
 
-## 🔎 Table Fact Verification (Released by Sep. 5)
+## 🔎 Table Fact Verification (Released by Sep. 30)
 
 ![Example](https://table-pretraining.github.io/assets/tableft_task.png)
 
