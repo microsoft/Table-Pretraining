@@ -124,6 +124,8 @@ $ python run_model.py predict --resource-dir <resource_dir> --checkpoint-name <m
 
 ![Example](https://table-pretraining.github.io/assets/tableft_task.png)
 
+The task of Table Fact Verification (TableFT) is to empower machines to justify if a statement follows facts in a given table. The result is a binary classification belonging to `1` (yes) or `0` (no).
+
 ### 🍲 Dataset
 
 In this project, following the practise of BART on sequence classification tasks, we feed the same input to the encoder and the decoder of TAPEX, and build a binary classifier on top of the hidden state of the last token in the decoder to output `0` or `1`.
