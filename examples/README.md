@@ -120,8 +120,86 @@ $ python run_model.py predict --resource-dir <resource_dir> --checkpoint-name <m
 ```
 > Note that if <resource_dir> is under the current working directory, you should still specify a prefix `./` to make the path like a local path (e.g., ./tapex.base). Otherwise, fairseq will regard it as a model name.
 
-## 🔎 Table Fact Verification (Released by Sep. 5)
+## 🔎 Table Fact Verification
 
 ![Example](https://table-pretraining.github.io/assets/tableft_task.png)
 
-The preprocessing script of table fact verification is a little complicated, and we're still refactoring the code. Please stay tuned!
+### 🍲 Dataset
+
+In this project, following the practise of BART on sequence classification tasks, we feed the same input to the encoder and the decoder of TAPEX, and build a binary classifier on top of the hidden state of the last token in the decoder to output `0` or `1`.
+Similar to the one in TableQA, the first step is to convert the original dataset into a compatiable format with fairseq.
+
+Now we support the **one-stop services** for the following datasets, and you can simply run the linked script to accomplish the dataset preparation.
+- [TabFact (Chen et al., 2020)](tableft/process_tabfact_data.py)
+
+Note that the one-stop service includes the procedure of downloading datasets and pretrained tapex models, truncating long inputs, converting to the fairseq sentence classification format, applying BPE tokenization and preprocessing for fairseq model training.
+
+By default, these scripts will process data using the dictionary of `tapex.base`. If you want to switch pre-trained models, please change the variable `MODLE_NAME` at line 21.
+
+After one dataset is prepared, you can run the `tableft/run_model.py` script to train your TableFT models.
+
+### 🍳 Train
+
+To train a model, you could simply run the following command, where:
+- `<dataset_dir>` refers to directory which contains a `input0` and a `label` folder such as `dataset/tabfact/tapex.base`
+- `<model_path>` refers to a pre-trained model path such as `tapex.base/model.pt`
+- `<model_arch>` is a pre-defined model architecture in fairseq such as `bart_base`.
+
+**HINT**:
+- for `tapex.base` or `tapex.large`, `<model_arch>` should be `bart_base` or `bart_large` respectively.
+- the reported `accuracy` metric during training is the offcial binary classification accuracy defined in TabFact.
+
+```shell
+$ python run_model.py train --dataset-dir <dataset_dir> --model-path <model_path> --model-arch <model_arch>
+```
+
+A full list of training arguments can be seen as below:
+
+```
+--dataset-dir DATASET_DIR
+                    dataset directory where train.src is located in
+--exp-dir EXP_DIR   
+                    experiment directory which stores the checkpoint
+                    weights
+--model-path MODEL_PATH
+                    the directory of pre-trained model path
+--model-arch {bart_large,bart_base}
+                    tapex large should correspond to bart_large, and tapex base should be bart_base
+--max-tokens MAX_TOKENS
+                    if you train a large model on 16GB memory, max-tokens
+                    should be empirically set as 1536, and can be near-
+                    linearly increased according to your GPU memory.
+--gradient-accumulation GRADIENT_ACCUMULATION
+                    the accumulation steps to arrive a equal batch size,
+                    the default value can be usedto reproduce our results.
+                    And you can also reduce it to a proper value for you.
+--total-num-update TOTAL_NUM_UPDATE
+                    the total optimization training steps
+--learning-rate LEARNING_RATE
+                    the peak learning rate for model training
+```
+
+### 🍪 Evaluate
+
+Once the model is fine-tuned, we can evaluate it by running the following command, where:
+- `<dataset_dir>` refers to directory which contains a `.input0` and a `.label` file such as `dataset/tabfact`. **ATTENTION, THIS IS NOT THE SAME AS IN TABLEQA**.
+- `<model_dir>` refers to directory which contains a fine-tuned model as `model.pt` such as `checkpoints`.
+- `<sub_dir>` refers to `valid`, `test`, `test_simple`, `test_complex`, `test_small` for different testing.
+
+```shell
+$ python run_model.py eval --dataset-dir <dataset_dir> --model-dir <model_dir> --sub-dir <sub_dir>
+```
+
+A full list of evaluating arguments can be seen as below:
+
+```
+--dataset-dir DATASET_DIR
+                    dataset directory where train.src is located in
+--model-dir MODEL_DIR
+                    the directory of fine-tuned model path such as
+                    wikisql.tapex.base
+--sub-dir {train,valid,test,test_complex,test_simple,test_small}
+                    the directory of pre-trained model path, and the
+                    default should be in{bart.base, bart.large,
+                    tapex.base, tapex.large}.
+```

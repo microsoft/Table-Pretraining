@@ -4,7 +4,8 @@ The official repository which contains the code and pre-trained models for our p
 
 # 🔥 Updates
 
-- **2021-08-28**: We released the fine-tuned model weights on SQA and WikiTableQuestions!
+- **2021-10-01**: We released the code for TableFT and the fine-tuned model weights on TabFact!
+- **2021-08-28**: We released the fine-tuned model weights on WikiSQL, SQA and WikiTableQuestions!
 - **2021-08-27**: We released the code, the pre-training corpus, and the pre-trained TAPEX model weights. Thanks for your patience!
 - **2021-07-16**: We released our [paper](https://arxiv.org/pdf/2107.07653.pdf) and [home page](https://table-pretraining.github.io/). Check it out!
 
@@ -126,6 +127,7 @@ Model | Dev Acc | Test Acc | Dataset | Download Data | Download Model
 `tapex.large.wtq` | 58.0 | 57.2 | WikiTableQuestions | [wtq.preprocessed.zip](https://github.com/microsoft/Table-Pretraining/releases/download/preprocessed-data/wtq.preprocessed.zip) | [tapex.large.wtq.tar.gz](https://github.com/microsoft/Table-Pretraining/releases/download/fine-tuned-model/tapex.large.wtq.tar.gz)
 `tapex.large.sqa` | 70.7 | 74.0 | SQA | [sqa.preprocessed.zip](https://github.com/microsoft/Table-Pretraining/releases/download/preprocessed-data/sqa.preprocessed.zip) | [tapex.large.sqa.tar.gz](https://github.com/microsoft/Table-Pretraining/releases/download/fine-tuned-model/tapex.large.sqa.tar.gz)
 `tapex.large.wikisql` | 89.3 | 89.2 | WikiSQL | [wikisql.preprocessed.zip](https://github.com/microsoft/Table-Pretraining/releases/download/preprocessed-data/wikisql.preprocessed.zip) | [tapex.large.wikisql.tar.gz](https://github.com/microsoft/Table-Pretraining/releases/download/fine-tuned-model/tapex.large.wikisql.tar.gz)
+`tapex.large.tabfact` | 84.2 | 84.0 | TabFact | [tabfact.preprocessed.zip](https://github.com/microsoft/Table-Pretraining/releases/download/preprocessed-data/tabfact.preprocessed.zip) | [tapex.large.tabfact.tar.gz](https://github.com/microsoft/Table-Pretraining/releases/download/fine-tuned-model/tapex.large.tabfact.tar.gz)
 
 Given these fine-tuned model weights, you can play with them using the `predict` mode in `examples/tableqa/run_model.py`.
 
