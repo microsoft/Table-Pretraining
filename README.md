@@ -4,6 +4,7 @@ The official repository which contains the code and pre-trained models for our p
 
 # 🔥 Updates
 
+- **2021-10-25**: We released the code for Table Pre-training. You can [check it out](examples/pretrain) and try pre-training on your data!
 - **2021-10-01**: We released the code for TableFT and the fine-tuned model weights on TabFact!
 - **2021-08-28**: We released the fine-tuned model weights on WikiSQL, SQA and WikiTableQuestions!
 - **2021-08-27**: We released the code, the pre-training corpus, and the pre-trained TAPEX model weights. Thanks for your patience!

@@ -206,7 +206,7 @@ A full list of evaluating arguments can be seen as below:
                     tapex.base, tapex.large}.
 ```
 
-##  [Table Pre-training](pretrain)
+## 🏋🏻 [Table Pre-training](pretrain)
 
 The procedure is as introduced in TableQA, and please follow the same procedure with scripts under [pretrain](pretrain) to perform pre-training on the pre-training corpus!
 If you'd like to pre-train the model with your data (e.g., private data), you should prepare them as the same format as the released table pre-training corpus, which is as following:
@@ -216,3 +216,8 @@ If you'd like to pre-train the model with your data (e.g., private data), you sh
 - valid.src (optional) # inputs for validation, one line one input
 - valid.tgt (optional) # outputs for validation, one line one output
 ```
+
+> If `valid.src` and `valid.tgt` are not provided, the script will automatically take a random set of `20,000` examples from the training set as the validation set.
+
+Also, if you would like to probe the SQL execution performance, the `predict` mode in [run_model.py](pretrain/run_model.py) would be your best choice.
+As done in above TableQA, you can pass an SQL query and a Table into TAPEX, and it returns its **execution** result.
