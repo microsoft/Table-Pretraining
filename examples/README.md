@@ -205,3 +205,14 @@ A full list of evaluating arguments can be seen as below:
                     default should be in{bart.base, bart.large,
                     tapex.base, tapex.large}.
 ```
+
+##  [Table Pre-training](pretrain)
+
+The procedure is as introduced in TableQA, and please follow the same procedure with scripts under [pretrain](pretrain) to perform pre-training on the pre-training corpus!
+If you'd like to pre-train the model with your data (e.g., private data), you should prepare them as the same format as the released table pre-training corpus, which is as following:
+```shell
+- train.src # inputs for training, one line one input
+- train.tgt # outputs for training, one line one output
+- valid.src (optional) # inputs for validation, one line one input
+- valid.tgt (optional) # outputs for validation, one line one output
+```
