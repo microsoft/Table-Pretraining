@@ -23,7 +23,7 @@ In the paper, we present T<span class="span-small">A</span>PE<span class="span-s
 T<span class="span-small">A</span>PE<span class="span-small">X</span> realizes table pre-training by **learning a neural SQL executor over a synthetic corpus**, which is obtained by automatically synthesizing executable SQL queries.
 
 <figure style="text-align:center">
-  <img src="https://table-pretraining.github.io/assets/tapex_overview.jpg" width="300">
+  <img src="https://table-pretraining.github.io/assets/tapex_overview.jpg">
   <figcaption>Fig 1. The schematic illustration of T<span class="span-small">A</span>PE<span class="span-small">X</span>. Tables not shown for brevity.</figcaption>
 </figure>
 
