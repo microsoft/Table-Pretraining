@@ -1,18 +1,23 @@
 # T<span style="font-size:0.8em;">A</span>PE<span style="font-size:0.8em;">X</span>: Table Pre-training via Learning a Neural SQL Executor
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/tapex-table-pre-training-via-learning-a/semantic-parsing-on-sqa)](https://paperswithcode.com/sota/semantic-parsing-on-sqa?p=tapex-table-pre-training-via-learning-a)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/tapex-table-pre-training-via-learning-a/table-based-fact-verification-on-tabfact)](https://paperswithcode.com/sota/table-based-fact-verification-on-tabfact?p=tapex-table-pre-training-via-learning-a)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/tapex-table-pre-training-via-learning-a/semantic-parsing-on-wikisql-1)](https://paperswithcode.com/sota/semantic-parsing-on-wikisql-1?p=tapex-table-pre-training-via-learning-a)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/tapex-table-pre-training-via-learning-a/semantic-parsing-on-wikitablequestions)](https://paperswithcode.com/sota/semantic-parsing-on-wikitablequestions?p=tapex-table-pre-training-via-learning-a)
+
+
 The official repository which contains the code and pre-trained models for our paper [T<span style="font-size:0.8em;">A</span>PE<span style="font-size:0.8em;">X</span>: Table Pre-training via Learning a Neural SQL Executor](https://arxiv.org/pdf/2107.07653.pdf).
 
 # 🔥 Updates
 
-- **2021-10-25**: We released the code for Table Pre-training. You can [check it out](examples/pretrain) and try pre-training on your data!
-- **2021-10-01**: We released the code for TableFT and the fine-tuned model weights on TabFact!
-- **2021-08-28**: We released the fine-tuned model weights on WikiSQL, SQA and WikiTableQuestions!
-- **2021-08-27**: We released the code, the pre-training corpus, and the pre-trained TAPEX model weights. Thanks for your patience!
-- **2021-07-16**: We released our [paper](https://arxiv.org/pdf/2107.07653.pdf) and [home page](https://table-pretraining.github.io/). Check it out!
+- [**2022-02-20**]: Our paper is accepted by ICLR 2022! We also provided a fine-tuning script based on 🤗 transformers, which is not merged now. You can see the preview version [here](https://github.com/SivilTaram/transformers/tree/add_tapex_bis/examples/research_projects/tapex). ⚠️ It is worth noting that `tapex-large` is not well-prepared now. We found there is a strange bug in `bart-large`, which also affects `tapex-large`. Hope it is solved in the near future.
+- [**2021-10-25**]: We released the code for Table Pre-training. You can [check it out](examples/pretrain) and try pre-training on your data!
+- [**2021-10-01**]: We released the code for TableFT and the fine-tuned model weights on TabFact!
+- [**2021-08-28**]: We released the fine-tuned model weights on WikiSQL, SQA and WikiTableQuestions!
+- [**2021-08-27**]: We released the code, the pre-training corpus, and the pre-trained TAPEX model weights. Thanks for your patience!
+- [**2021-07-16**]: We released our [paper](https://arxiv.org/pdf/2107.07653.pdf) and [home page](https://table-pretraining.github.io/). Check it out!
 
 # 🏴󠁶󠁵󠁭󠁡󠁰󠁿 Overview
-
-## Paper
 
 In the paper, we present T<span class="span-small">A</span>PE<span class="span-small">X</span> (for **Ta**ble **P**re-training via **Ex**ecution), a conceptually simple and empirically powerful pre-training approach to empower existing generative pre-trained models (e.g., [BART](https://arxiv.org/abs/1910.13461) in our paper) with table reasoning skills.
 T<span class="span-small">A</span>PE<span class="span-small">X</span> realizes table pre-training by **learning a neural SQL executor over a synthetic corpus**, which is obtained by automatically synthesizing executable SQL queries.
@@ -157,13 +162,13 @@ It also requires you to have `Git` installed at first.
 If our work is useful for you, please consider citing our paper:
 
 ```bibtex
-@misc{liu2021tapex,
-    title={TAPEX: Table Pre-training via Learning a Neural SQL Executor}, 
-    author={Qian Liu and Bei Chen and Jiaqi Guo and Zeqi Lin and Jian-guang Lou},
-    year={2021},
-    eprint={2107.07653},
-    archivePrefix={arXiv},
-    primaryClass={cs.CL}
+@inproceedings{
+    liu2022tapex,
+    title={{TAPEX}: Table Pre-training via Learning a Neural {SQL} Executor},
+    author={Qian Liu and Bei Chen and Jiaqi Guo and Morteza Ziyadi and Zeqi Lin and Weizhu Chen and Jian-Guang Lou},
+    booktitle={International Conference on Learning Representations},
+    year={2022},
+    url={https://openreview.net/forum?id=O50443AsCP}
 }
 ```
 
