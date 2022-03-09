@@ -10,6 +10,7 @@ The official repository which contains the code and pre-trained models for our p
 
 # 🔥 Updates
 
+- [**2022-03-09**]: We have fixed the issue in `tapex-large`! Now you can view [here](#run-TAPEX-using-Huggingface) to see how to fine-tune TAPEX using 🤗 transformers and 🤗 datasets! They will be merged into the main library soon!
 - [**2022-02-20**]: Our paper is accepted by ICLR 2022! We also provided a fine-tuning script based on 🤗 transformers, which is not merged now. You can see the preview version [here](https://github.com/SivilTaram/transformers/tree/add_tapex_bis/examples/research_projects/tapex). ⚠️ It is worth noting that `tapex-large` is not well-prepared now. We found there is a strange bug in `bart-large`, which also affects `tapex-large`. Hope it is solved in the near future.
 - [**2021-10-25**]: We released the code for Table Pre-training. You can [check it out](examples/pretrain) and try pre-training on your data!
 - [**2021-10-01**]: We released the code for TableFT and the fine-tuned model weights on TabFact!
@@ -156,6 +157,16 @@ pip install git+https://github.com/pytorch/fairseq.git@801a64683164680562c77b688
 ```
 It also requires you to have `Git` installed at first.
 
+# 🤗 Run TAPEX using Huggingface
+
+First, you should run the following commands to install the latest lib developed for TAPEX.
+
+```python
+pip install https://github.com/SivilTaram/datasets/archive/add-wtq-dataset.zip --user
+pip install https://github.com/SivilTaram/transformers/archive/add_tapex_bis.zip --user
+```
+
+Then, you could find the detailed tutorial on how to reproduce our results on benchmarks at [here](https://github.com/SivilTaram/transformers/tree/add_tapex_bis/examples/research_projects/tapex).
 
 # 💬 Citation
 
