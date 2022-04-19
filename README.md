@@ -1,15 +1,32 @@
 # T<span style="font-size:0.8em;">A</span>PE<span style="font-size:0.8em;">X</span>: Table Pre-training via Learning a Neural SQL Executor
 
+<p align="center">
+  	<a href="https://github.com/huggingface/transformers/tree/main/examples/research_projects/tapex">
+      <img alt="🤗 transformers support" src="https://img.shields.io/badge/🤗 transformers-master-green" />
+    </a>
+   	<a href="https://github.com/MLNLP-World/Paper_Writing_Tips/stargazers">
+       <img alt="stars" src="https://img.shields.io/github/stars/microsoft/Table-Pretraining" />
+  	</a>
+  	<a href="https://github.com/MLNLP-World/Paper_Writing_Tips/network/members">
+       <img alt="FORK" src="https://img.shields.io/github/forks/microsoft/Table-Pretraining?color=FF8000" />
+  	</a>
+    <a href="https://github.com/MLNLP-World/Paper_Writing_Tips/issues">
+      <img alt="Issues" src="https://img.shields.io/github/issues/microsoft/Table-Pretraining?color=0088ff"/>
+    </a>
+    <br />
+</p>
+
+The official repository which contains the code and pre-trained models for our paper [T<span style="font-size:0.8em;">A</span>PE<span style="font-size:0.8em;">X</span>: Table Pre-training via Learning a Neural SQL Executor](https://arxiv.org/pdf/2107.07653.pdf).
+
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/tapex-table-pre-training-via-learning-a/semantic-parsing-on-sqa)](https://paperswithcode.com/sota/semantic-parsing-on-sqa?p=tapex-table-pre-training-via-learning-a)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/tapex-table-pre-training-via-learning-a/table-based-fact-verification-on-tabfact)](https://paperswithcode.com/sota/table-based-fact-verification-on-tabfact?p=tapex-table-pre-training-via-learning-a)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/tapex-table-pre-training-via-learning-a/semantic-parsing-on-wikisql-1)](https://paperswithcode.com/sota/semantic-parsing-on-wikisql-1?p=tapex-table-pre-training-via-learning-a)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/tapex-table-pre-training-via-learning-a/semantic-parsing-on-wikitablequestions)](https://paperswithcode.com/sota/semantic-parsing-on-wikitablequestions?p=tapex-table-pre-training-via-learning-a)
 
 
-The official repository which contains the code and pre-trained models for our paper [T<span style="font-size:0.8em;">A</span>PE<span style="font-size:0.8em;">X</span>: Table Pre-training via Learning a Neural SQL Executor](https://arxiv.org/pdf/2107.07653.pdf).
-
 # 🔥 Updates
 
+- [**2022-04-19**]: TAPEX is officially supported by 🤗 transformers! Now you can find the [example fine-tuning script](https://github.com/huggingface/transformers/tree/main/examples/research_projects/tapex) and the [tapex model](https://huggingface.co/models?search=microsoft/tapex) on the huggingface master branch. Have fun!
 - [**2022-03-09**]: We have fixed the issue in `tapex-large`! Now you can view [here](#-run-tapex-using-huggingface) to see how to fine-tune TAPEX using 🤗 transformers and 🤗 datasets! They will be merged into the main library soon!
 - [**2022-02-20**]: Our paper is accepted by ICLR 2022! We also provided a fine-tuning script based on 🤗 transformers, which is not merged now. You can see the preview version [here](https://github.com/SivilTaram/transformers/tree/add_tapex_bis/examples/research_projects/tapex). ⚠️ It is worth noting that `tapex-large` is not well-prepared now. We found there is a strange bug in `bart-large`, which also affects `tapex-large`. Hope it is solved in the near future.
 - [**2021-10-25**]: We released the code for Table Pre-training. You can [check it out](examples/pretrain) and try pre-training on your data!
@@ -145,18 +162,6 @@ $ python examples/tableqa/run_model.py predict --resource-dir ./tapex.large.wtq 
 2021-08-29 17:39:47 | INFO | __main__ | The answer should be : 2004
 ```
 
-# ❓ Frequently Asked Questions
-
-### 1. AttributeError: 'NoneType' object has no attribute 'bpe'
-
-You should firstly check the version of fairseq, which should be `1.0.0a0+801a646` when you use `pip list` to show it.
-
-Note that the fairseq dependency is not officially released as `1.0.0`, so the one is not correct if you directly install it from `pip install fairseq`. Our installtion is equalivant to the following command:
-```shell
-pip install git+https://github.com/pytorch/fairseq.git@801a64683164680562c77b688d9ca77fc3e0cea7
-```
-It also requires you to have `Git` installed at first.
-
 # 🤗 Run TAPEX using Huggingface
 
 First, you should run the following commands to install the latest lib developed for TAPEX.
@@ -166,7 +171,7 @@ pip install https://github.com/SivilTaram/datasets/archive/add-wtq-dataset.zip -
 pip install https://github.com/SivilTaram/transformers/archive/add_tapex_bis.zip --user
 ```
 
-Then, you could find the detailed tutorial on how to reproduce our results on benchmarks at [here](https://github.com/SivilTaram/transformers/tree/add_tapex_bis/examples/research_projects/tapex).
+Then, you could find the detailed tutorial on how to reproduce our results on benchmarks at [here](https://github.com/huggingface/transformers/tree/main/examples/research_projects/tapex).
 
 # 💬 Citation
 
@@ -182,6 +187,18 @@ If our work is useful for you, please consider citing our paper:
     url={https://openreview.net/forum?id=O50443AsCP}
 }
 ```
+
+# ❓ Frequently Asked Questions
+
+### 1. AttributeError: 'NoneType' object has no attribute 'bpe'
+
+You should firstly check the version of fairseq, which should be `1.0.0a0+801a646` when you use `pip list` to show it.
+
+Note that the fairseq dependency is not officially released as `1.0.0`, so the one is not correct if you directly install it from `pip install fairseq`. Our installtion is equalivant to the following command:
+```shell
+pip install git+https://github.com/pytorch/fairseq.git@801a64683164680562c77b688d9ca77fc3e0cea7
+```
+It also requires you to have `Git` installed at first.
 
 # 👍 Contributing
 
