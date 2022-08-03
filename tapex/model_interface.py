@@ -36,4 +36,4 @@ class TAPEXModelInterface:
             beam=5
         )
         # the result should be a list of answers, and we only care about the answer itself instead of score
-        return model_output[0][0]
+        return model_output
