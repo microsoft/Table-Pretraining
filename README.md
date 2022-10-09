@@ -26,6 +26,7 @@ The official repository which contains the code and pre-trained models for our p
 
 # 🔥 Updates
 
+- [**2022-10-10**]: We released the data generator code for SQL execution data synthesis. You can [check it out](data_generator) and try to synthesize your own pre-training data.
 - [**2022-04-19**]: TAPEX is officially supported by 🤗 transformers! Now you can find the [example fine-tuning script](https://github.com/huggingface/transformers/tree/main/examples/research_projects/tapex) and the [tapex model](https://huggingface.co/models?search=microsoft/tapex) on the huggingface master branch. Have fun!
 - [**2022-03-09**]: We have fixed the issue in `tapex-large`! Now you can view [here](#-run-tapex-using-huggingface) to see how to fine-tune TAPEX using 🤗 transformers and 🤗 datasets! They will be merged into the main library soon!
 - [**2022-02-20**]: Our paper is accepted by ICLR 2022! We also provided a fine-tuning script based on 🤗 transformers, which is not merged now. You can see the preview version [here](https://github.com/SivilTaram/transformers/tree/add_tapex_bis/examples/research_projects/tapex). ⚠️ It is worth noting that `tapex-large` is not well-prepared now. We found there is a strange bug in `bart-large`, which also affects `tapex-large`. Hope it is solved in the near future.
@@ -167,11 +168,33 @@ $ python examples/tableqa/run_model.py predict --resource-dir ./tapex.large.wtq 
 First, you should run the following commands to install the latest lib developed for TAPEX.
 
 ```python
-pip install https://github.com/SivilTaram/datasets/archive/add-wtq-dataset.zip --user
-pip install https://github.com/SivilTaram/transformers/archive/add_tapex_bis.zip --user
+pip install datasets
+pip install transformers
 ```
 
 Then, you could find the detailed tutorial on how to reproduce our results on benchmarks at [here](https://github.com/huggingface/transformers/tree/main/examples/research_projects/tapex).
+
+# 🐣 Synthesize your own pre-training data
+
+Go to [this folder](/data_generator) and install the requirements using the provided file:
+
+```bash
+$ pip install -r requirements.txt
+```
+
+Then directly run the script `main.py`! By default, you will obtain a file with nearly 5 million examples consisting of (SQL query, Table, Answer) and the flattened fairseq input and output. More details can be found in the argument parser as below:
+
+```
+  --template_file TEMPLATE_FILE
+                        SQL query file which provides the template for synthesizing more SQL queries
+  --mode {train,dev}    train or dev for pre-training
+  --dev_id_file DEV_ID_FILE
+                        the dev id file to avoid potential data leakage
+  --instance_number INSTANCE_NUMBER
+                        the expected instance number corresponding to each template
+  --max_source_length MAX_SOURCE_LENGTH
+                        the maximum length for the flattened table plus input SQL query
+```
 
 # 💬 Citation
 
