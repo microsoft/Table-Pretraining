@@ -215,13 +215,7 @@ If our work is useful for you, please consider citing our paper:
 
 ### 1. AttributeError: 'NoneType' object has no attribute 'bpe'
 
-You should firstly check the version of fairseq, which should be `1.0.0a0+801a646` when you use `pip list` to show it.
-
-Note that the fairseq dependency is not officially released as `1.0.0`, so the one is not correct if you directly install it from `pip install fairseq`. Our installtion is equalivant to the following command:
-```shell
-pip install git+https://github.com/pytorch/fairseq.git@801a64683164680562c77b688d9ca77fc3e0cea7
-```
-It also requires you to have `Git` installed at first.
+You should firstly check the version of fairseq, which should be equal or greater than `0.12.0` when you use `pip list` to show it.
 
 # 👍 Contributing
 
