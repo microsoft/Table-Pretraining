@@ -24,7 +24,7 @@ setuptools.setup(
     install_requires=[
         'transformers>=4.6.0',
         'numpy==1.20.3',
-        "fairseq@git+https://github.com/facebookresearch/fairseq@801a64683164680562c77b688d9ca77fc3e0cea7",
+        "fairseq>=0.12.0",
         "records",
         "pandas"
     ],
