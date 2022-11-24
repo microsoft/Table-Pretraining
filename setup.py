@@ -23,7 +23,7 @@ setuptools.setup(
     ],
     install_requires=[
         'transformers>=4.6.0',
-        'numpy==1.20.3',
+        'numpy==1.22.0',
         "fairseq>=0.12.0",
         "records",
         "pandas"
