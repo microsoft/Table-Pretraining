@@ -62,6 +62,7 @@ def train_fairseq_model(args):
         --arch {args.model_arch}  \
         --memory-efficient-fp16	\
         --task sentence_prediction \
+        --max-positions 1024 \
         --num-classes 2 \
         --add-prev-output-tokens \
         --criterion sentence_prediction \
