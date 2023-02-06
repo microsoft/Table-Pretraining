@@ -37,7 +37,7 @@ class TableLinearize(abc.ABC):
 
 class IndexedRowTableLinearize(TableLinearize):
     """
-    FORMAT: col: col1 | col2 | col 3 row 1 : val1 | val2 | val3 row 2 : ...
+    FORMAT: col: col1 | col2 | col3 row 1 : val1 | val2 | val3 row 2 : ...
     """
 
     def process_table(self, table_content: Dict):
